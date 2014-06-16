@@ -17,6 +17,16 @@ feature 'user views list of characters', %Q{
       { name: 'James Bond', show_id: 2 }
     ]
 
+    show_attrs = [
+      { title: 'Danger Man', id: 1, network: 'BBC'},
+      { title: '007', id: 2, network: 'BBC'}
+    ]
+
+    shows = []
+    show_attrs.each do |attrs|
+      shows << TelevisionShow.create(attrs)
+    end
+
     character_attrs.each do |attrs|
       characters << Character.create(attrs)
     end
@@ -24,7 +34,7 @@ feature 'user views list of characters', %Q{
     visit '/characters'
     characters.each do |character|
       expect(page).to have_content character.name
-      expect(page).to have_content character.show_id
+      expect(page).to have_content TelevisionShow.find(character.show_id).title
     end
   end
 end

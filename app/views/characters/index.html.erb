@@ -3,7 +3,7 @@
 <ul>
   <% @characters.each do |character| %>
     <li>
-      <%= "#{character.name} is on #{character.show_id}" %>
+      <%= "#{character.name} is on #{TelevisionShow.find(character.show_id).title}" %>
     </li>
   <% end %>
 </ul>
