@@ -14,13 +14,17 @@ class CharactersController < ApplicationController
 
   def create
     @character = Character.new(character_params)
-
-    if @character.save
-      flash[:notice] = "Success!"
-      redirect_to '/characters'
+    if Character.find_by(name: (@character.name)) == nil
+      if @character.save
+        flash[:notice] = "Success!"
+        redirect_to '/characters'
+      else
+        flash.now[:notice] = "Your character couldn't be saved."
+        render :new
+      end
     else
-      flash.now[:notice] = "Your character couldn't be saved."
-      render :new
+      flash.now[:notice] = "Character already exists."
+        render :new
     end
   end
 
