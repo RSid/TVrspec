@@ -4,7 +4,7 @@
   <% if @characters != nil %>
     <% @characters.each do |character| %>
       <li>
-        <%= "#{character.name} is on #{TelevisionShow.find(character.show_id).title}" %>
+        <%= "#{character.name} is played by #{character.actor_name} on #{TelevisionShow.find(character.show_id).title}. Description: #{character.description}" %>
       </li>
     <% end %>
   <% end %>

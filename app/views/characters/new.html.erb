@@ -16,6 +16,16 @@
   </div>
 
   <div>
+    <%= f.label :actor_name %>
+    <%= f.text_field :actor_name %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div>
     <%= f.label :tv_show %>
     <%= f.collection_select(:show_id, TelevisionShow.all, :id, :title ) %>
   </div>

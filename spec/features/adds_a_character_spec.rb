@@ -11,15 +11,19 @@ feature 'user adds a new character', %Q{
 
     show = TelevisionShow.create(title: 'Terribleness', id: 3, network: 'BBC')
 
-    character = Character.new(name: 'Austin Powers', show_id: 3)
+    character = Character.new(name: 'Austin Powers', actor_name: 'Mike Meyers', description: 'cheesey spy', show_id: 3)
 
     visit '/characters/new'
     fill_in 'Name', with: character.name
+    fill_in 'Actor name', with: character.actor_name
+    fill_in 'Description', with: character.description
     select(show.title, :from => :character_show_id)
     click_on 'Submit'
 
     expect(page).to have_content 'Success'
     expect(page).to have_content character.name
+    expect(page).to have_content character.actor_name
+    expect(page).to have_content character.description
     expect(page).to_not have_content character.show_id
   end
 
@@ -37,6 +41,8 @@ feature 'user adds a new character', %Q{
 
     attrs = {
       name: 'Austin Powers',
+      actor_name: 'Mike Meyers',
+      description: 'cheesey spy',
       show_id: 3
     }
 
@@ -44,6 +50,8 @@ feature 'user adds a new character', %Q{
 
     visit '/characters/new'
     fill_in 'Name', with: old_character.name
+    fill_in 'Actor name', with: old_character.actor_name
+    fill_in 'Description', with: old_character.description
     select(show.title, :from => :character_show_id)
     click_on 'Submit'
 
@@ -51,6 +59,8 @@ feature 'user adds a new character', %Q{
 
     visit '/characters/new'
     fill_in 'Name', with: character.name
+    fill_in 'Actor name', with: character.actor_name
+    fill_in 'Description', with: character.description
     select(show.title, :from => :character_show_id)
     click_on 'Submit'
 

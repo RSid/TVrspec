@@ -13,8 +13,8 @@ feature 'user views list of characters', %Q{
   scenario 'user views characters' do
     characters = []
     character_attrs = [
-      { name: 'John Drake', show_id: 1 },
-      { name: 'James Bond', show_id: 2 }
+      { name: 'John Drake', actor_name: 'Patrick McGoohan', description: 'Jaded spy', show_id: 1 },
+      { name: 'James Bond', actor_name: 'Sean Connery', description: 'suave-sleazy spy', show_id: 2 }
     ]
 
     show_attrs = [
