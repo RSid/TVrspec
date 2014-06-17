@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
   def index
-
+    @character = Character.new()
     @characters = Character.all
   end
 
@@ -26,6 +26,13 @@ class CharactersController < ApplicationController
       flash.now[:notice] = "Character already exists."
         render :new
     end
+  end
+
+  def destroy
+
+    @character = Character.find(params["character"]["id"])
+    @character.destroy
+    redirect_to '/characters'
   end
 
   private

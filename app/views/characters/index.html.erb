@@ -9,3 +9,12 @@
     <% end %>
   <% end %>
 </ul>
+
+<%= form_for(@character,url: character_path(:id), method: :delete) do |f| %>
+  <div>
+    <%= f.label :character_name_to_delete %>
+    <%= f.collection_select(:id, Character.all, :id, :name ) %>
+  </div>
+
+  <%= f.submit 'Submit' %>
+<% end %>
