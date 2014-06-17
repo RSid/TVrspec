@@ -24,18 +24,18 @@ feature "user views a TV show's details", %Q{
   end
 
 
-  # scenario "user views a TV show's charcterss" do
-  #   show = TelevisionShow.create(title: 'Game of Thrones',
-  #     network: 'HBO', id: 2 )
+  scenario "user views a TV show's charcterss" do
+    show = TelevisionShow.create(title: 'Game of Thrones',
+      network: 'HBO', id: 2 )
 
-  #   character = Character.create(name: 'Eddard Stark',show_id: 2)
+    character = Character.create(name: 'Eddard Stark', actor_name: 'Sean Bean', description: 'A decent man in an indecent time.', show_id: 2)
 
-  #   visit "/television_shows/#{show.id}"
+    visit "/television_shows/#{show.id}"
 
-  #   expect(page).to have_content character.name
-  #   expect(page).to have_content character.actor_name
-  #   expect(page).to have_content character.description
+    expect(page).to have_content character.name
+    expect(page).to have_content character.actor_name
+    expect(page).to have_content character.description
 
-  # end
+  end
 
 end
