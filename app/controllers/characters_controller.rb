@@ -1,5 +1,6 @@
 class CharactersController < ApplicationController
   def index
+
     @characters = Character.all
   end
 
@@ -12,20 +13,22 @@ class CharactersController < ApplicationController
   end
 
   def create
-    # @television_show = TelevisionShow.new(television_show_params)
+    @character = Character.new(character_params)
 
-    # if @television_show.save
-    #   flash[:notice] = "Success!"
-    #   redirect_to '/television_shows'
-    # else
-    #   flash.now[:notice] = "Your movie couldn't be saved."
-    #   render :new
-    # end
+    if @character.save
+      flash[:notice] = "Success!"
+      redirect_to '/characters'
+    else
+      flash.now[:notice] = "Your character couldn't be saved."
+      render :new
+    end
   end
 
   private
 
   def character_params
-    params.require(:charcter).permit(:name, :show_id)
+
+    params.require(:character).permit(:name,:show_id)
+
   end
 end

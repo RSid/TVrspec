@@ -1,0 +1,24 @@
+<h3>Add A Character</h3>
+
+<%= form_for @character do |f| %>
+
+  <% if @character.errors.any? %>
+    <ul>
+      <% @character.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :tv_show %>
+    <%= f.collection_select(:show_id, TelevisionShow.all, :id, :title ) %>
+  </div>
+
+  <%= f.submit 'Submit' %>
+<% end %>
